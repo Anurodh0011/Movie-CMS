@@ -196,4 +196,52 @@
             </div>
         </div>
     </div>
+
+    <div class="mt-5 mb-4">
+        <h4 class="h5 mb-3 text-gray-800 fw-bold"><i class="bi bi-graph-up me-2 text-primary"></i>Analytics & Complex Reports</h4>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card border-0 shadow-sm p-3 h-100" style="background: linear-gradient(to right, #ffffff, #f0f4ff); border-radius: 12px;">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary bg-opacity-10 p-3 me-3">
+                            <i class="bi bi-file-earmark-person text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">User Ticket History</h6>
+                            <p class="text-muted smaller mb-2" style="font-size: 0.75rem;">6-month report with details</p>
+                            <a href="complex_user_tickets.aspx" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold">Open Report →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card border-0 shadow-sm p-3 h-100" style="background: linear-gradient(to right, #ffffff, #e3fcf7); border-radius: 12px;">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-info bg-opacity-10 p-3 me-3">
+                            <i class="bi bi-building-check text-info fs-4"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Theater-Hall Schedule</h6>
+                            <p class="text-muted smaller mb-2" style="font-size: 0.75rem;">Movies per specific screen</p>
+                            <a href="complex_theater_movie.aspx" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold text-info">Open Report →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card border-0 shadow-sm p-3 h-100" style="background: linear-gradient(to right, #ffffff, #fff9db); border-radius: 12px;">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-warning bg-opacity-10 p-3 me-3">
+                            <i class="bi bi-trophy text-warning fs-4"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Occupancy Performers</h6>
+                            <p class="text-muted smaller mb-2" style="font-size: 0.75rem;">Top 3 highest seat occupancy</p>
+                            <a href="complex_occupancy.aspx" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold text-warning">Open Report →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>

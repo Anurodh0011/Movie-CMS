@@ -162,6 +162,18 @@
                     <li>
                         <a href="ticket.aspx"><i class="bi bi-ticket-perforated"></i> Tickets</a>
                     </li>
+                    <li class="sidebar-header mt-4 mb-2 ps-3">
+                        <small class="text-uppercase fw-bold" style="font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 1px;">Complex Forms</small>
+                    </li>
+                    <li>
+                        <a href="complex_user_tickets.aspx"><i class="bi bi-file-earmark-person"></i> User Tickets</a>
+                    </li>
+                    <li>
+                        <a href="complex_theater_movie.aspx"><i class="bi bi-building-check"></i> Theater Movie</a>
+                    </li>
+                    <li>
+                        <a href="complex_occupancy.aspx"><i class="bi bi-graph-up-arrow"></i> Occupancy Performer</a>
+                    </li>
                 </ul>
             </nav>
 

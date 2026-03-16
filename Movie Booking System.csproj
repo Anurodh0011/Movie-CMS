@@ -60,6 +60,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Data.OracleClient" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -75,6 +76,9 @@
     <Content Include="theater.aspx" />
     <Content Include="ticket.aspx" />
     <Content Include="users.aspx" />
+    <Content Include="complex_user_tickets.aspx" />
+    <Content Include="complex_theater_movie.aspx" />
+    <Content Include="complex_occupancy.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +138,27 @@
     </Compile>
     <Compile Include="users.aspx.designer.cs">
       <DependentUpon>users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="complex_user_tickets.aspx.cs">
+      <DependentUpon>complex_user_tickets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="complex_user_tickets.aspx.designer.cs">
+      <DependentUpon>complex_user_tickets.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="complex_theater_movie.aspx.cs">
+      <DependentUpon>complex_theater_movie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="complex_theater_movie.aspx.designer.cs">
+      <DependentUpon>complex_theater_movie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="complex_occupancy.aspx.cs">
+      <DependentUpon>complex_occupancy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="complex_occupancy.aspx.designer.cs">
+      <DependentUpon>complex_occupancy.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

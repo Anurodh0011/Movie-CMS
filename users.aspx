@@ -133,7 +133,7 @@
         SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot;, &quot;USER_EMAIL&quot;, &quot;USER_PHONE&quot;, &quot;USER_ADDRESS&quot; FROM &quot;USERS&quot;" 
         UpdateCommand="UPDATE &quot;USERS&quot; SET &quot;USER_NAME&quot; = :USER_NAME, &quot;USER_EMAIL&quot; = :USER_EMAIL, &quot;USER_PHONE&quot; = :USER_PHONE, &quot;USER_ADDRESS&quot; = :USER_ADDRESS WHERE &quot;USER_ID&quot; = :USER_ID">
         <DeleteParameters>
-            <asp:Parameter Name="USER_ID" Type="String" />
+            <asp:Parameter Name="USER_ID" Type="String" /> 
         </DeleteParameters>
         <InsertParameters>
             <asp:Parameter Name="USER_ID" Type="String" />
