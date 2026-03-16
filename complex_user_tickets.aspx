@@ -102,19 +102,7 @@
             </div>
 
             <div class="mt-3">
-                <a href="javascript:void(0)" onclick="$('.sql-query-panel').slideToggle()" class="text-decoration-none small text-primary fw-bold">
-                    <i class="bi bi-code-slash me-1"></i> View SQL Query
-                </a>
-                <div class="sql-query-panel">
-                    SELECT t.TICKET_ID, m.MOVIE_TITLE, s.SHOW_DATE, s.SHOW_TIME, th.THEATER_NAME, h.HALL_NAME, t.SEAT_NO, t.PRICE<br/>
-                    FROM TICKET t<br/>
-                    JOIN SHOW s ON t.SHOW_ID = s.SHOW_ID<br/>
-                    JOIN MOVIE m ON s.MOVIE_ID = m.MOVIE_ID<br/>
-                    JOIN HALL h ON s.HALL_ID = h.HALL_ID<br/>
-                    JOIN THEATER th ON h.THEATER_ID = th.THEATER_ID<br/>
-                    WHERE t.USER_ID = :USER_ID<br/>
-                    AND s.SHOW_DATE BETWEEN :FROM_DATE AND :TO_DATE
-                </div>
+                <!-- SQL Query Panel Removed as per request -->
             </div>
         </div>
     </div>
@@ -212,12 +200,13 @@
     <asp:SqlDataSource ID="dsTickets" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
         SelectCommand="SELECT t.&quot;TICKET_ID&quot;, m.&quot;MOVIE_TITLE&quot;, s.&quot;SHOW_DATE&quot;, s.&quot;SHOW_TIME&quot;, th.&quot;THEATER_NAME&quot;, h.&quot;HALL_NAME&quot;, t.&quot;SEAT_NO&quot;, t.&quot;PRICE&quot;
                       FROM &quot;TICKET&quot; t
-                      JOIN &quot;SHOW&quot; s ON t.&quot;SHOW_ID&quot; = s.&quot;SHOW_ID&quot;
-                      JOIN &quot;MOVIE&quot; m ON s.&quot;MOVIE_ID&quot; = m.&quot;MOVIE_ID&quot;
-                      JOIN &quot;HALL&quot; h ON s.&quot;HALL_ID&quot; = h.&quot;HALL_ID&quot;
-                      JOIN &quot;THEATER&quot; th ON h.&quot;THEATER_ID&quot; = th.&quot;THEATER_ID&quot;
-                      WHERE t.&quot;USER_ID&quot; = :USER_ID
-                      AND s.&quot;SHOW_DATE&quot; BETWEEN :FROM_DATE AND :TO_DATE">
+                      JOIN &quot;SHOW_TICKET&quot; st ON t.&quot;TICKET_ID&quot; = st.&quot;TICKET_ID&quot;
+                      JOIN &quot;SHOW&quot; s ON st.&quot;SHOW_ID&quot; = s.&quot;SHOW_ID&quot;
+                      JOIN &quot;MOVIE&quot; m ON st.&quot;MOVIE_ID&quot; = m.&quot;MOVIE_ID&quot;
+                      JOIN &quot;HALL&quot; h ON st.&quot;HALL_ID&quot; = h.&quot;HALL_ID&quot;
+                      JOIN &quot;THEATER&quot; th ON st.&quot;THEATER_ID&quot; = th.&quot;THEATER_ID&quot;
+                      WHERE st.&quot;USER_ID&quot; = :USER_ID
+                      AND s.&quot;SHOW_DATE&quot; BETWEEN TO_DATE(:FROM_DATE, 'YYYY-MM-DD') AND TO_DATE(:TO_DATE, 'YYYY-MM-DD')">
         <SelectParameters>
             <asp:ControlParameter ControlID="ddlUsers" Name="USER_ID" PropertyName="SelectedValue" />
             <asp:ControlParameter ControlID="txtFromDate" Name="FROM_DATE" PropertyName="Text" />

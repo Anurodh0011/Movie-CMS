@@ -96,19 +96,7 @@
             </div>
 
             <div class="mt-3">
-                <a href="javascript:void(0)" onclick="$('.sql-query-panel').slideToggle()" class="text-decoration-none small text-info fw-bold">
-                    <i class="bi bi-code-slash me-1"></i> View SQL Query
-                </a>
-                <div class="sql-query-panel">
-                    SELECT s.SHOW_ID, m.MOVIE_TITLE, m.GENRE, m.MOVIE_DURATION, s.SHOW_NAME, s.SHOW_DATE, s.SHOW_TIME, h.HALL_TYPE<br/>
-                    FROM SHOW s<br/>
-                    JOIN MOVIE m ON s.MOVIE_ID = m.MOVIE_ID<br/>
-                    JOIN HALL h ON s.HALL_ID = h.HALL_ID<br/>
-                    JOIN THEATER th ON h.THEATER_ID = th.THEATER_ID<br/>
-                    WHERE th.THEATER_CITY = :CITY<br/>
-                    AND th.THEATER_NAME = :THEATER<br/>
-                    AND h.HALL_NAME = :HALL
-                </div>
+                <!-- SQL Query Panel Removed as per request -->
             </div>
         </div>
     </div>
@@ -172,9 +160,10 @@
         SelectCommand="SELECT s.&quot;SHOW_ID&quot;, m.&quot;MOVIE_TITLE&quot;, m.&quot;GENRE&quot;, m.&quot;MOVIE_DURATION&quot; || ' min' AS MOVIE_DURATION, s.&quot;SHOW_NAME&quot;, s.&quot;SHOW_DATE&quot;, s.&quot;SHOW_TIME&quot;, h.&quot;HALL_TYPE&quot;,
                       1 AS TICKETS_SOLD, 149 AS SEATS_AVAIL
                       FROM &quot;SHOW&quot; s
-                      JOIN &quot;MOVIE&quot; m ON s.&quot;MOVIE_ID&quot; = m.&quot;MOVIE_ID&quot;
-                      JOIN &quot;HALL&quot; h ON s.&quot;HALL_ID&quot; = h.&quot;HALL_ID&quot;
-                      JOIN &quot;THEATER&quot; th ON h.&quot;THEATER_ID&quot; = th.&quot;THEATER_ID&quot;
+                      JOIN &quot;HALL_SHOW&quot; hs ON s.&quot;SHOW_ID&quot; = hs.&quot;SHOW_ID&quot;
+                      JOIN &quot;MOVIE&quot; m ON hs.&quot;MOVIE_ID&quot; = m.&quot;MOVIE_ID&quot;
+                      JOIN &quot;HALL&quot; h ON hs.&quot;HALL_ID&quot; = h.&quot;HALL_ID&quot;
+                      JOIN &quot;THEATER&quot; th ON hs.&quot;THEATER_ID&quot; = th.&quot;THEATER_ID&quot;
                       WHERE th.&quot;THEATER_CITY&quot; = :CITY
                       AND th.&quot;THEATER_NAME&quot; = :THEATER
                       AND h.&quot;HALL_NAME&quot; = :HALL">

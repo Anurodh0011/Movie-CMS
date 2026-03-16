@@ -44,7 +44,8 @@ namespace Movie_Booking_System
             
             using (OracleConnection conn = new OracleConnection(connStr))
             {
-                string sql = "SELECT DISTINCT THEATER_NAME FROM THEATER WHERE THEATER_CITY = :city ORDER BY THEATER_NAME";
+                // Join via HALL_SHOW to find theaters in this city
+                string sql = "SELECT DISTINCT th.THEATER_NAME FROM THEATER th JOIN HALL_SHOW hs ON th.THEATER_ID = hs.THEATER_ID WHERE th.THEATER_CITY = :city ORDER BY th.THEATER_NAME";
                 OracleCommand cmd = new OracleCommand(sql, conn);
                 cmd.Parameters.AddWithValue("city", ddlCity.SelectedValue);
                 conn.Open();
@@ -63,7 +64,8 @@ namespace Movie_Booking_System
 
             using (OracleConnection conn = new OracleConnection(connStr))
             {
-                string sql = "SELECT DISTINCT h.HALL_NAME FROM HALL h JOIN THEATER th ON h.THEATER_ID = th.THEATER_ID WHERE th.THEATER_NAME = :theater ORDER BY h.HALL_NAME";
+                // Join via HALL_SHOW to find halls in this theater
+                string sql = "SELECT DISTINCT h.HALL_NAME FROM HALL h JOIN HALL_SHOW hs ON h.HALL_ID = hs.HALL_ID JOIN THEATER th ON hs.THEATER_ID = th.THEATER_ID WHERE th.THEATER_NAME = :theater ORDER BY h.HALL_NAME";
                 OracleCommand cmd = new OracleCommand(sql, conn);
                 cmd.Parameters.AddWithValue("theater", ddlTheater.SelectedValue);
                 conn.Open();
