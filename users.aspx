@@ -12,7 +12,7 @@
         </button>
     </div>
 
-    <!-- Add Form (Hidden by default) -->
+    <!-- Add Form -->
     <div class="form-container">
         <div class="card shadow mb-4">
             <div class="card-header py-3">

@@ -33,7 +33,7 @@
         #sidebar {
             min-width: 250px;
             max-width: 250px;
-            background: linear-gradient(180deg, var(--primary-color) 10%, #224abe 100%);
+            background: #4e73df;
             color: #fff;
             transition: all 0.3s;
             min-height: 100vh;
@@ -163,7 +163,7 @@
                         <a href="ticket.aspx"><i class="bi bi-ticket-perforated"></i> Tickets</a>
                     </li>
                     <li class="sidebar-header mt-4 mb-2 ps-3">
-                        <small class="text-uppercase fw-bold" style="font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 1px;">Complex Forms</small>
+                        <small class="text-uppercase fw-bold" style="font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 1px;">Reports</small>
                     </li>
                     <li>
                         <a href="complex_user_tickets.aspx"><i class="bi bi-file-earmark-person"></i> User Tickets</a>

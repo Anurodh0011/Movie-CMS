@@ -59,17 +59,10 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="report-header d-flex align-items-center">
-        <div class="header-icon">
-            <i class="bi bi-bank"></i>
-        </div>
-        <div>
-            <h2 class="mb-1">Complex Form 2 — Theater City Hall Movie</h2>
-            <p class="mb-0 text-white-50">For any selected theater/city/hall, shows all scheduled movies and their showtimes.</p>
-        </div>
+    <div class="mb-4">
+        <h1 class="h3 mb-1 text-gray-800">Theater & Hall Movie Schedule</h1>
+        <p class="text-muted">View all movies and showtimes scheduled for a specific screen in any theater.</p>
     </div>
-
-    <div class="card filter-card">
         <div class="card-body p-4">
             <h5 class="card-title mb-3"><i class="bi bi-funnel me-2"></i>Filter by Theater / City / Hall</h5>
             <p class="text-muted small mb-4">Select a city, theater, and hall to see which movies are currently scheduled in that screen.</p>
@@ -91,7 +84,7 @@
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-info text-white w-100 py-2" OnClick="btnSearch_Click" />
+                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary text-white w-100 py-2" OnClick="btnSearch_Click" />
                 </div>
             </div>
 

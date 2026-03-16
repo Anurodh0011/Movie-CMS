@@ -86,17 +86,10 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="report-header d-flex align-items-center">
-        <div class="header-icon">
-            <i class="bi bi-trophy"></i>
-        </div>
-        <div>
-            <h2 class="mb-1">Complex Form 3 — Movie Occupancy Performer</h2>
-            <p class="mb-0 text-white-50">For any selected movie, shows the top 3 theater/city/halls by seat occupancy percentage (paid tickets only)</p>
-        </div>
+    <div class="mb-4">
+        <h1 class="h3 mb-1 text-gray-800">Movie Occupancy Analytics</h1>
+        <p class="text-muted">Analyze the top performing theaters for any movie based on seat occupancy from paid tickets.</p>
     </div>
-
-    <div class="card filter-card">
         <div class="card-body p-4">
             <h5 class="card-title mb-3"><i class="bi bi-bullseye me-2"></i>Select Movie to Analyse</h5>
             <p class="text-muted small mb-4">Select a movie to rank the top 3 theaters/halls by seat occupancy. Only paid (Booked) tickets count towards occupancy.</p>
@@ -108,7 +101,7 @@
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-2 d-flex align-items-end">
-                    <asp:Button ID="btnAnalyse" runat="server" Text="Analyse" CssClass="btn btn-warning text-white w-100 py-2 fw-bold" OnClick="btnAnalyse_Click" />
+                    <asp:Button ID="btnAnalyse" runat="server" Text="Analyse" CssClass="btn btn-primary text-white w-100 py-2 fw-bold" OnClick="btnAnalyse_Click" />
                 </div>
             </div>
 

@@ -66,15 +66,9 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- Blue Header Card -->
-    <div class="report-header d-flex align-items-center">
-        <div class="header-icon">
-            <i class="bi bi-ticket-detailed"></i>
-        </div>
-        <div>
-            <h2 class="mb-1">Complex Form 1 — User Ticket Report</h2>
-            <p class="mb-0 text-white-50">For any selected user, shows their details and all tickets purchased in the last 6 months.</p>
-        </div>
+    <div class="mb-4">
+        <h1 class="h3 mb-1 text-gray-800">User Ticket Report</h1>
+        <p class="text-muted">Generate a detailed report of tickets purchased by a specific user over a six-month period.</p>
     </div>
 
     <!-- Search/Filter Card -->

@@ -53,7 +53,7 @@
                         </div>
                         <div class="mt-3">
                             <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Save Movie" CssClass="btn btn-success" ValidationGroup="CreateMovieGroup" />
-                            <button type="button" class="btn btn-secondary" onclick="toggleForm()">Cancel</button>
+                            <button type="button" class="btn btn-primary" onclick="toggleForm()">Cancel</button>
                         </div>
                         <asp:ValidationSummary ID="vsCreate" runat="server" ValidationGroup="CreateMovieGroup" CssClass="alert alert-danger mt-3 small" HeaderText="Please correct the following:" />
                         <script type="text/javascript">

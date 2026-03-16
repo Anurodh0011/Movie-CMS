@@ -40,8 +40,20 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">System Dashboard</h1>
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-primary text-white shadow" style="border-radius: 12px; overflow: hidden; border: none;">
+                <div class="card-body p-4 d-flex justify-content-between align-items-center">
+                    <div>
+                        <h1 class="h3 mb-1">System Dashboard</h1>
+                        <p class="mb-0 opacity-75">Welcome back! Here's what's happening in your movie booking system today.</p>
+                    </div>
+                    <div class="d-none d-md-block">
+                        <i class="bi bi-speedometer2" style="font-size: 3.5rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <asp:SqlDataSource ID="dsUsers" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT COUNT(*) AS TOTAL FROM &quot;USERS&quot;"></asp:SqlDataSource>
@@ -78,11 +90,11 @@
 
         <!-- Movies -->
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card success shadow h-100 py-2" onclick="location.href='movie.aspx'">
+            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='movie.aspx'">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col me-2">
-                            <div class="stat-label text-success mb-1">Total Movies</div>
+                            <div class="stat-label text-primary mb-1">Total Movies</div>
                             <div class="stat-value">
                                 <asp:FormView ID="fvMovies" runat="server" DataSourceID="dsMovies">
                                     <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
@@ -94,7 +106,7 @@
                         </div>
                     </div>
                     <div class="mt-3">
-                        <a href="movie.aspx" class="btn btn-sm btn-outline-success w-100">View all Movies</a>
+                        <a href="movie.aspx" class="btn btn-sm btn-outline-primary w-100">View all Movies</a>
                     </div>
                 </div>
             </div>
@@ -102,11 +114,11 @@
 
         <!-- Theaters -->
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card info shadow h-100 py-2" onclick="location.href='theater.aspx'">
+            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='theater.aspx'">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col me-2">
-                            <div class="stat-label text-info mb-1">Total Theaters</div>
+                            <div class="stat-label text-primary mb-1">Total Theaters</div>
                             <div class="stat-value">
                                 <asp:FormView ID="fvTheaters" runat="server" DataSourceID="dsTheaters">
                                     <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
@@ -118,7 +130,7 @@
                         </div>
                     </div>
                     <div class="mt-3">
-                        <a href="theater.aspx" class="btn btn-sm btn-outline-info w-100">View all Theaters</a>
+                        <a href="theater.aspx" class="btn btn-sm btn-outline-primary w-100">View all Theaters</a>
                     </div>
                 </div>
             </div>
@@ -126,11 +138,11 @@
 
         <!-- Halls -->
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card warning shadow h-100 py-2" onclick="location.href='hall.aspx'">
+            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='hall.aspx'">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col me-2">
-                            <div class="stat-label text-warning mb-1">Total Halls</div>
+                            <div class="stat-label text-primary mb-1">Total Halls</div>
                             <div class="stat-value">
                                 <asp:FormView ID="fvHalls" runat="server" DataSourceID="dsHalls">
                                     <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
@@ -142,7 +154,7 @@
                         </div>
                     </div>
                     <div class="mt-3">
-                        <a href="hall.aspx" class="btn btn-sm btn-outline-warning w-100">View all Halls</a>
+                        <a href="hall.aspx" class="btn btn-sm btn-outline-primary w-100">View all Halls</a>
                     </div>
                 </div>
             </div>
@@ -150,11 +162,11 @@
 
         <!-- Shows -->
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card danger shadow h-100 py-2" onclick="location.href='show.aspx'">
+            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='show.aspx'">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col me-2">
-                            <div class="stat-label text-danger mb-1">Total Shows</div>
+                            <div class="stat-label text-primary mb-1">Total Shows</div>
                             <div class="stat-value">
                                 <asp:FormView ID="fvShows" runat="server" DataSourceID="dsShows">
                                     <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
@@ -166,7 +178,7 @@
                         </div>
                     </div>
                     <div class="mt-3">
-                        <a href="show.aspx" class="btn btn-sm btn-outline-danger w-100">View all Shows</a>
+                        <a href="show.aspx" class="btn btn-sm btn-outline-primary w-100">View all Shows</a>
                     </div>
                 </div>
             </div>
@@ -174,11 +186,11 @@
 
         <!-- Tickets -->
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card dark shadow h-100 py-2" onclick="location.href='ticket.aspx'">
+            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='ticket.aspx'">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col me-2">
-                            <div class="stat-label text-dark mb-1">Total Tickets</div>
+                            <div class="stat-label text-primary mb-1">Total Tickets</div>
                             <div class="stat-value">
                                 <asp:FormView ID="fvTickets" runat="server" DataSourceID="dsTickets">
                                     <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
@@ -190,7 +202,7 @@
                         </div>
                     </div>
                     <div class="mt-3">
-                        <a href="ticket.aspx" class="btn btn-sm btn-outline-dark w-100">View all Tickets</a>
+                        <a href="ticket.aspx" class="btn btn-sm btn-outline-primary w-100">View all Tickets</a>
                     </div>
                 </div>
             </div>
@@ -209,35 +221,35 @@
                         <div>
                             <h6 class="mb-0 fw-bold">User Ticket History</h6>
                             <p class="text-muted smaller mb-2" style="font-size: 0.75rem;">6-month report with details</p>
-                            <a href="complex_user_tickets.aspx" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold">Open Report →</a>
+                            <a href="complex_user_tickets.aspx" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold">Open Report</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <div class="card border-0 shadow-sm p-3 h-100" style="background: linear-gradient(to right, #ffffff, #e3fcf7); border-radius: 12px;">
+                <div class="card border-0 shadow-sm p-3 h-100" style="background: linear-gradient(to right, #ffffff, #f0f4ff); border-radius: 12px;">
                     <div class="d-flex align-items-center">
-                        <div class="rounded-circle bg-info bg-opacity-10 p-3 me-3">
-                            <i class="bi bi-building-check text-info fs-4"></i>
+                        <div class="rounded-circle bg-primary bg-opacity-10 p-3 me-3">
+                            <i class="bi bi-building-check text-primary fs-4"></i>
                         </div>
                         <div>
                             <h6 class="mb-0 fw-bold">Theater-Hall Schedule</h6>
                             <p class="text-muted smaller mb-2" style="font-size: 0.75rem;">Movies per specific screen</p>
-                            <a href="complex_theater_movie.aspx" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold text-info">Open Report →</a>
+                            <a href="complex_theater_movie.aspx" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold text-primary">Open Report</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <div class="card border-0 shadow-sm p-3 h-100" style="background: linear-gradient(to right, #ffffff, #fff9db); border-radius: 12px;">
+                <div class="card border-0 shadow-sm p-3 h-100" style="background: linear-gradient(to right, #ffffff, #f0f4ff); border-radius: 12px;">
                     <div class="d-flex align-items-center">
-                        <div class="rounded-circle bg-warning bg-opacity-10 p-3 me-3">
-                            <i class="bi bi-trophy text-warning fs-4"></i>
+                        <div class="rounded-circle bg-primary bg-opacity-10 p-3 me-3">
+                            <i class="bi bi-trophy text-primary fs-4"></i>
                         </div>
                         <div>
                             <h6 class="mb-0 fw-bold">Occupancy Performers</h6>
                             <p class="text-muted smaller mb-2" style="font-size: 0.75rem;">Top 3 highest seat occupancy</p>
-                            <a href="complex_occupancy.aspx" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold text-warning">Open Report →</a>
+                            <a href="complex_occupancy.aspx" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold text-primary">Open Report</a>
                         </div>
                     </div>
                 </div>
