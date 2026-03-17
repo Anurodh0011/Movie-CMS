@@ -7,35 +7,52 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
     <style>
         .stat-card {
-            border-left: 4px solid;
-            transition: transform 0.2s;
+            border: none;
+            border-bottom: 4px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            overflow: hidden;
+            background: #fff;
         }
         .stat-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 1rem 3rem rgba(0,0,0,0.1) !important;
         }
-        .stat-card.primary { border-left-color: #4e73df; }
-        .stat-card.success { border-left-color: #1cc88a; }
-        .stat-card.info { border-left-color: #36b9cc; }
-        .stat-card.warning { border-left-color: #f6c23e; }
-        .stat-card.danger { border-left-color: #e74a3b; }
-        .stat-card.dark { border-left-color: #5a5c69; }
+        .stat-card.primary { border-bottom-color: #4e73df; }
+        .stat-card.success { border-bottom-color: #1cc88a; }
+        .stat-card.info { border-bottom-color: #36b9cc; }
+        .stat-card.warning { border-bottom-color: #f6c23e; }
+        .stat-card.danger { border-bottom-color: #e74a3b; }
+        .stat-card.dark { border-bottom-color: #5a5c69; }
         
         .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #5a5c69;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #2e3b52;
+            line-height: 1;
         }
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05rem;
+            letter-spacing: 0.1rem;
+            color: #858796;
         }
-        .stat-icon {
-            font-size: 2rem;
-            color: #dddfeb;
+        .stat-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
         }
+        .bg-primary-soft { background-color: rgba(78, 115, 223, 0.1); color: #4e73df; }
+        .bg-success-soft { background-color: rgba(28, 200, 138, 0.1); color: #1cc88a; }
+        .bg-info-soft { background-color: rgba(54, 185, 204, 0.1); color: #36b9cc; }
+        .bg-warning-soft { background-color: rgba(246, 194, 62, 0.1); color: #f6c23e; }
+        .bg-danger-soft { background-color: rgba(231, 74, 59, 0.1); color: #e74a3b; }
+        .bg-dark-soft { background-color: rgba(90, 92, 105, 0.1); color: #5a5c69; }
     </style>
 </asp:Content>
 
@@ -63,146 +80,165 @@
     <asp:SqlDataSource ID="dsShows" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT COUNT(*) AS TOTAL FROM &quot;SHOW&quot;"></asp:SqlDataSource>
     <asp:SqlDataSource ID="dsTickets" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT COUNT(*) AS TOTAL FROM &quot;TICKET&quot;"></asp:SqlDataSource>
 
+    <%-- Chart Data Sources --%>
+    <asp:SqlDataSource ID="dsMovieStats" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        SelectCommand="SELECT M.MOVIE_TITLE, COUNT(ST.TICKET_ID) AS TICKET_COUNT FROM &quot;MOVIE&quot; M LEFT JOIN &quot;SHOW_TICKET&quot; ST ON M.MOVIE_ID = ST.MOVIE_ID GROUP BY M.MOVIE_TITLE">
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="dsRevenueStats" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        SelectCommand="SELECT M.MOVIE_TITLE, NVL(SUM(T.PRICE), 0) AS REVENUE FROM &quot;MOVIE&quot; M LEFT JOIN &quot;SHOW_TICKET&quot; ST ON M.MOVIE_ID = ST.MOVIE_ID LEFT JOIN &quot;TICKET&quot; T ON ST.TICKET_ID = T.TICKET_ID GROUP BY M.MOVIE_TITLE">
+    </asp:SqlDataSource>
+
     <div class="row">
         <!-- Users -->
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='users.aspx'">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col me-2">
-                            <div class="stat-label text-primary mb-1">Total Users</div>
-                            <div class="stat-value">
-                                <asp:FormView ID="fvUsers" runat="server" DataSourceID="dsUsers">
-                                    <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
-                                </asp:FormView>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="bi bi-people stat-icon"></i>
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card stat-card info shadow-sm h-100" onclick="location.href='users.aspx'">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="stat-icon-wrapper bg-info-soft">
+                            <i class="bi bi-people"></i>
                         </div>
                     </div>
-                    <div class="mt-3">
-                        <a href="users.aspx" class="btn btn-sm btn-outline-primary w-100">View all Users</a>
+                    <div>
+                        <div class="stat-label mb-1">Users</div>
+                        <div class="stat-value">
+                            <asp:FormView ID="fvUsers" runat="server" DataSourceID="dsUsers">
+                                <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
+                            </asp:FormView>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Movies -->
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='movie.aspx'">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col me-2">
-                            <div class="stat-label text-primary mb-1">Total Movies</div>
-                            <div class="stat-value">
-                                <asp:FormView ID="fvMovies" runat="server" DataSourceID="dsMovies">
-                                    <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
-                                </asp:FormView>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="bi bi-camera-reels stat-icon"></i>
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card stat-card primary shadow-sm h-100" onclick="location.href='movie.aspx'">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="stat-icon-wrapper bg-primary-soft">
+                            <i class="bi bi-camera-reels"></i>
                         </div>
                     </div>
-                    <div class="mt-3">
-                        <a href="movie.aspx" class="btn btn-sm btn-outline-primary w-100">View all Movies</a>
+                    <div>
+                        <div class="stat-label mb-1">Movies</div>
+                        <div class="stat-value">
+                            <asp:FormView ID="fvMovies" runat="server" DataSourceID="dsMovies">
+                                <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
+                            </asp:FormView>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Theaters -->
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='theater.aspx'">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col me-2">
-                            <div class="stat-label text-primary mb-1">Total Theaters</div>
-                            <div class="stat-value">
-                                <asp:FormView ID="fvTheaters" runat="server" DataSourceID="dsTheaters">
-                                    <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
-                                </asp:FormView>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="bi bi-building stat-icon"></i>
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card stat-card success shadow-sm h-100" onclick="location.href='theater.aspx'">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="stat-icon-wrapper bg-success-soft">
+                            <i class="bi bi-building"></i>
                         </div>
                     </div>
-                    <div class="mt-3">
-                        <a href="theater.aspx" class="btn btn-sm btn-outline-primary w-100">View all Theaters</a>
+                    <div>
+                        <div class="stat-label mb-1">Theaters</div>
+                        <div class="stat-value">
+                            <asp:FormView ID="fvTheaters" runat="server" DataSourceID="dsTheaters">
+                                <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
+                            </asp:FormView>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Halls -->
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='hall.aspx'">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col me-2">
-                            <div class="stat-label text-primary mb-1">Total Halls</div>
-                            <div class="stat-value">
-                                <asp:FormView ID="fvHalls" runat="server" DataSourceID="dsHalls">
-                                    <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
-                                </asp:FormView>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="bi bi-door-open stat-icon"></i>
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card stat-card warning shadow-sm h-100" onclick="location.href='hall.aspx'">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="stat-icon-wrapper bg-warning-soft">
+                            <i class="bi bi-door-open"></i>
                         </div>
                     </div>
-                    <div class="mt-3">
-                        <a href="hall.aspx" class="btn btn-sm btn-outline-primary w-100">View all Halls</a>
+                    <div>
+                        <div class="stat-label mb-1">Halls</div>
+                        <div class="stat-value">
+                            <asp:FormView ID="fvHalls" runat="server" DataSourceID="dsHalls">
+                                <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
+                            </asp:FormView>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Shows -->
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='show.aspx'">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col me-2">
-                            <div class="stat-label text-primary mb-1">Total Shows</div>
-                            <div class="stat-value">
-                                <asp:FormView ID="fvShows" runat="server" DataSourceID="dsShows">
-                                    <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
-                                </asp:FormView>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="bi bi-calendar-event stat-icon"></i>
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card stat-card danger shadow-sm h-100" onclick="location.href='show.aspx'">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="stat-icon-wrapper bg-danger-soft">
+                            <i class="bi bi-calendar-event"></i>
                         </div>
                     </div>
-                    <div class="mt-3">
-                        <a href="show.aspx" class="btn btn-sm btn-outline-primary w-100">View all Shows</a>
+                    <div>
+                        <div class="stat-label mb-1">Shows</div>
+                        <div class="stat-value">
+                            <asp:FormView ID="fvShows" runat="server" DataSourceID="dsShows">
+                                <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
+                            </asp:FormView>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Tickets -->
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card stat-card primary shadow h-100 py-2" onclick="location.href='ticket.aspx'">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col me-2">
-                            <div class="stat-label text-primary mb-1">Total Tickets</div>
-                            <div class="stat-value">
-                                <asp:FormView ID="fvTickets" runat="server" DataSourceID="dsTickets">
-                                    <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
-                                </asp:FormView>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="bi bi-ticket-perforated stat-icon"></i>
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card stat-card dark shadow-sm h-100" onclick="location.href='ticket.aspx'">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="stat-icon-wrapper bg-dark-soft">
+                            <i class="bi bi-ticket-perforated"></i>
                         </div>
                     </div>
-                    <div class="mt-3">
-                        <a href="ticket.aspx" class="btn btn-sm btn-outline-primary w-100">View all Tickets</a>
+                    <div>
+                        <div class="stat-label mb-1">Tickets</div>
+                        <div class="stat-value">
+                            <asp:FormView ID="fvTickets" runat="server" DataSourceID="dsTickets">
+                                <ItemTemplate><%# Eval("TOTAL") %></ItemTemplate>
+                            </asp:FormView>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row mb-5 mt-4 g-4">
+        <div class="col-xl-8">
+            <div class="card shadow-sm h-100">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary"><i class="bi bi-bar-chart-fill me-2"></i>Ticket Sales by Movie</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area" style="position: relative; height: 350px;">
+                        <canvas id="movieBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary"><i class="bi bi-pie-chart-fill me-2"></i>Revenue Contribution</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie d-flex flex-column align-items-center" style="position: relative; height: 350px;">
+                        <canvas id="revenuePieChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -256,4 +292,88 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data for Movie Bar Chart
+            const movieLabels = [
+                <asp:Repeater ID="rptMovieLabels" runat="server" DataSourceID="dsMovieStats">
+                    <ItemTemplate>'<%# Eval("MOVIE_TITLE") %>',</ItemTemplate>
+                </asp:Repeater>
+            ];
+            const movieData = [
+                <asp:Repeater ID="rptMovieData" runat="server" DataSourceID="dsMovieStats">
+                    <ItemTemplate><%# Eval("TICKET_COUNT") %>,</ItemTemplate>
+                </asp:Repeater>
+            ];
+
+            // Data for Revenue Pie Chart
+            const revenueLabels = [
+                <asp:Repeater ID="rptRevLabels" runat="server" DataSourceID="dsRevenueStats">
+                    <ItemTemplate>'<%# Eval("MOVIE_TITLE") %>',</ItemTemplate>
+                </asp:Repeater>
+            ];
+            const revenueData = [
+                <asp:Repeater ID="rptRevData" runat="server" DataSourceID="dsRevenueStats">
+                    <ItemTemplate><%# Eval("REVENUE") %>,</ItemTemplate>
+                </asp:Repeater>
+            ];
+
+            // Movie Bar Chart
+            const ctxBar = document.getElementById('movieBarChart').getContext('2d');
+            new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: movieLabels,
+                    datasets: [{
+                        label: 'Tickets Sold',
+                        data: movieData,
+                        backgroundColor: 'rgba(78, 115, 223, 0.8)',
+                        borderColor: 'rgba(78, 115, 223, 1)',
+                        borderWidth: 1,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { precision: 0 }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            // Revenue Pie Chart
+            const ctxPie = document.getElementById('revenuePieChart').getContext('2d');
+            new Chart(ctxPie, {
+                type: 'doughnut',
+                data: {
+                    labels: revenueLabels,
+                    datasets: [{
+                        data: revenueData,
+                        backgroundColor: [
+                            '#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b', '#5a5c69', 
+                            '#574ea1', '#fbcbc9', '#858796', '#000000'
+                        ],
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { boxWidth: 12, padding: 15 }
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        });
+    </script>
 </asp:Content>

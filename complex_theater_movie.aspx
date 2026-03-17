@@ -88,9 +88,6 @@
                 </div>
             </div>
 
-            <div class="mt-3">
-                <!-- SQL Query Panel Removed as per request -->
-            </div>
         </div>
     </div>
 

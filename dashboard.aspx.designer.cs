@@ -69,6 +69,24 @@ namespace Movie_Booking_System
         protected global::System.Web.UI.WebControls.SqlDataSource dsTickets;
 
         /// <summary>
+        /// dsMovieStats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsMovieStats;
+
+        /// <summary>
+        /// dsRevenueStats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsRevenueStats;
+
+        /// <summary>
         /// fvUsers control.
         /// </summary>
         /// <remarks>
@@ -121,5 +139,41 @@ namespace Movie_Booking_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FormView fvTickets;
+
+        /// <summary>
+        /// rptMovieLabels control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptMovieLabels;
+
+        /// <summary>
+        /// rptMovieData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptMovieData;
+
+        /// <summary>
+        /// rptRevLabels control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptRevLabels;
+
+        /// <summary>
+        /// rptRevData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptRevData;
     }
 }

@@ -104,10 +104,6 @@
                     <asp:Button ID="btnAnalyse" runat="server" Text="Analyse" CssClass="btn btn-primary text-white w-100 py-2 fw-bold" OnClick="btnAnalyse_Click" />
                 </div>
             </div>
-
-            <div class="mt-3">
-                <!-- SQL Query Panel Removed as per request -->
-            </div>
         </div>
     </div>
 
@@ -173,7 +169,7 @@
                     <asp:TemplateField HeaderText="Rank">
                         <ItemTemplate>
                             <span class="fw-bold">
-                                <%# (Container.DataItemIndex == 0 ? "🏆 #1" : (Container.DataItemIndex == 1 ? "🥈 #2" : "🥉 #3")) %>
+                                <%# (Container.DataItemIndex == 0 ? "#1" : (Container.DataItemIndex == 1 ? "#2" : "#3")) %>
                             </span>
                         </ItemTemplate>
                     </asp:TemplateField>
