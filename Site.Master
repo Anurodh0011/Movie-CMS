@@ -63,8 +63,7 @@
             width: 250px;
             min-width: 250px;
             max-width: 250px;
-            background: var(--primary-color);
-            background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            background: #4e73df;
             color: #fff;
             transition: all 0.3s;
             position: fixed;
