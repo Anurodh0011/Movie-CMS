@@ -1,7 +1,7 @@
 <%@ Page Title="Occupancy Performer" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="complex_occupancy.aspx.cs" Inherits="Movie_Booking_System.complex_occupancy" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Complex Form 3 — Movie Occupancy Performer
+    Movie Occupancy Performer
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
@@ -105,7 +105,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
     <asp:Panel ID="pnlResults" runat="server" Visible="false">
         <div class="movie-info-bar">
@@ -142,7 +141,7 @@
                         <div class="rank-badge"><%# Container.ItemIndex + 1 %></div>
                         <div class="flex-grow-1">
                             <div class="d-flex justify-content-between">
-                                <h6 class="mb-1 fw-bold"><%# Eval("THEATER_NAME") %> — <%# Eval("HALL_NAME") %></h6>
+                                <h6 class="mb-1 fw-bold"><%# Eval("THEATER_NAME") %>  <%# Eval("HALL_NAME") %></h6>
                                 <span class="fw-bold text-dark"><%# Eval("OCCUPANCY_PERCENT") %>%</span>
                             </div>
                             <div class="small text-muted mb-2">

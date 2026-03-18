@@ -100,7 +100,8 @@
         InsertCommand="INSERT INTO &quot;HALL&quot; (&quot;HALL_ID&quot;, &quot;HALL_NAME&quot;, &quot;HALL_TYPE&quot;) VALUES (:HALL_ID, :HALL_NAME, :HALL_TYPE)" 
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
         SelectCommand="SELECT &quot;HALL_ID&quot;, &quot;HALL_NAME&quot;, &quot;HALL_TYPE&quot; FROM &quot;HALL&quot;" 
-        UpdateCommand="UPDATE &quot;HALL&quot; SET &quot;HALL_NAME&quot; = :HALL_NAME, &quot;HALL_TYPE&quot; = :HALL_TYPE WHERE &quot;HALL_ID&quot; = :HALL_ID">
+        UpdateCommand="UPDATE &quot;HALL&quot; SET &quot;HALL_NAME&quot; = :HALL_NAME, &quot;HALL_TYPE&quot; = :HALL_TYPE WHERE &quot;HALL_ID&quot; = :HALL_ID"
+        OnInserted="SqlDataSource1_Inserted" OnUpdated="SqlDataSource1_Updated" OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="HALL_ID" Type="String" />
         </DeleteParameters>

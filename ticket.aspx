@@ -116,7 +116,8 @@
         InsertCommand="INSERT INTO &quot;TICKET&quot; (&quot;TICKET_ID&quot;, &quot;TICKET_TIME&quot;, &quot;SEAT_NO&quot;, &quot;PRICE&quot;) VALUES (:TICKET_ID, :TICKET_TIME, :SEAT_NO, :PRICE)" 
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
         SelectCommand="SELECT &quot;TICKET_ID&quot;, &quot;TICKET_TIME&quot;, &quot;SEAT_NO&quot;, &quot;PRICE&quot; FROM &quot;TICKET&quot;" 
-        UpdateCommand="UPDATE &quot;TICKET&quot; SET &quot;TICKET_TIME&quot; = :TICKET_TIME, &quot;SEAT_NO&quot; = :SEAT_NO, &quot;PRICE&quot; = :PRICE WHERE &quot;TICKET_ID&quot; = :TICKET_ID">
+        UpdateCommand="UPDATE &quot;TICKET&quot; SET &quot;TICKET_TIME&quot; = :TICKET_TIME, &quot;SEAT_NO&quot; = :SEAT_NO, &quot;PRICE&quot; = :PRICE WHERE &quot;TICKET_ID&quot; = :TICKET_ID"
+        OnInserted="SqlDataSource1_Inserted" OnUpdated="SqlDataSource1_Updated" OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="TICKET_ID" Type="String" />
         </DeleteParameters>

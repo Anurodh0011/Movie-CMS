@@ -114,7 +114,8 @@
         InsertCommand="INSERT INTO &quot;SHOW&quot; (&quot;SHOW_NAME&quot;, &quot;SHOW_ID&quot;, &quot;SHOW_TIME&quot;, &quot;SHOW_DATE&quot;) VALUES (:SHOW_NAME, :SHOW_ID, :SHOW_TIME, :SHOW_DATE)" 
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
         SelectCommand="SELECT &quot;SHOW_NAME&quot;, &quot;SHOW_ID&quot;, &quot;SHOW_TIME&quot;, &quot;SHOW_DATE&quot; FROM &quot;SHOW&quot;" 
-        UpdateCommand="UPDATE &quot;SHOW&quot; SET &quot;SHOW_NAME&quot; = :SHOW_NAME, &quot;SHOW_TIME&quot; = :SHOW_TIME, &quot;SHOW_DATE&quot; = :SHOW_DATE WHERE &quot;SHOW_ID&quot; = :SHOW_ID">
+        UpdateCommand="UPDATE &quot;SHOW&quot; SET &quot;SHOW_NAME&quot; = :SHOW_NAME, &quot;SHOW_TIME&quot; = :SHOW_TIME, &quot;SHOW_DATE&quot; = :SHOW_DATE WHERE &quot;SHOW_ID&quot; = :SHOW_ID"
+        OnInserted="SqlDataSource1_Inserted" OnUpdated="SqlDataSource1_Updated" OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="SHOW_ID" Type="String" />
         </DeleteParameters>

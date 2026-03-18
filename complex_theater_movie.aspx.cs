@@ -88,7 +88,9 @@ namespace Movie_Booking_System
             gvShows.DataBind();
 
             DataView dv = (DataView)dsShows.Select(DataSourceSelectArguments.Empty);
-            litShowCount.Text = (dv != null) ? dv.Count.ToString() : "0";
+            int count = (dv != null) ? dv.Count : 0;
+            litShowCount.Text = count.ToString();
+            ((Site)Master).ShowMessage($"Schedule found! <strong>{count}</strong> screenings match your filters.", "success");
         }
     }
 }

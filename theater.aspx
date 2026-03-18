@@ -114,7 +114,8 @@
         InsertCommand="INSERT INTO &quot;THEATER&quot; (&quot;THEATER_ID&quot;, &quot;THEATER_NAME&quot;, &quot;THEATER_CITY&quot;, &quot;THEATER_ADDRESS&quot;) VALUES (:THEATER_ID, :THEATER_NAME, :THEATER_CITY, :THEATER_ADDRESS)" 
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
         SelectCommand="SELECT &quot;THEATER_ID&quot;, &quot;THEATER_NAME&quot;, &quot;THEATER_CITY&quot;, &quot;THEATER_ADDRESS&quot; FROM &quot;THEATER&quot;" 
-        UpdateCommand="UPDATE &quot;THEATER&quot; SET &quot;THEATER_NAME&quot; = :THEATER_NAME, &quot;THEATER_CITY&quot; = :THEATER_CITY, &quot;THEATER_ADDRESS&quot; = :THEATER_ADDRESS WHERE &quot;THEATER_ID&quot; = :THEATER_ID">
+        UpdateCommand="UPDATE &quot;THEATER&quot; SET &quot;THEATER_NAME&quot; = :THEATER_NAME, &quot;THEATER_CITY&quot; = :THEATER_CITY, &quot;THEATER_ADDRESS&quot; = :THEATER_ADDRESS WHERE &quot;THEATER_ID&quot; = :THEATER_ID"
+        OnInserted="SqlDataSource1_Inserted" OnUpdated="SqlDataSource1_Updated" OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="THEATER_ID" Type="String" />
         </DeleteParameters>

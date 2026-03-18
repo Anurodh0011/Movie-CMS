@@ -44,7 +44,6 @@
                                 <label class="form-label">Phone Number <span class="text-danger">*</span></label>
                                 <asp:TextBox ID="USER_PHONETextBox" runat="server" Text='<%# Bind("USER_PHONE") %>' CssClass="form-control" placeholder="Enter Phone" />
                                 <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ControlToValidate="USER_PHONETextBox" ErrorMessage="Phone is required" Display="Dynamic" CssClass="text-danger small" ValidationGroup="CreateUserGroup" />
-                                <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="USER_PHONETextBox" ErrorMessage="Numbers only" Display="Dynamic" CssClass="text-danger small" ValidationGroup="CreateUserGroup" ValidationExpression="^\d+$" />
                             </div>
                         </div>
                         <div class="mb-3">
@@ -100,7 +99,6 @@
                             <EditItemTemplate>
                                 <asp:TextBox ID="txtEditPhone" runat="server" Text='<%# Bind("USER_PHONE") %>' CssClass="form-control form-control-sm" />
                                 <asp:RequiredFieldValidator ID="rfvEditPhone" runat="server" ControlToValidate="txtEditPhone" ErrorMessage="*" Display="Dynamic" CssClass="text-danger" ValidationGroup="EditUserGroup" />
-                                <asp:RegularExpressionValidator ID="revEditPhone" runat="server" ControlToValidate="txtEditPhone" ErrorMessage="?" Display="Dynamic" CssClass="text-danger" ValidationGroup="EditUserGroup" ValidationExpression="^\d+$" />
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Address" SortExpression="USER_ADDRESS">
@@ -131,7 +129,8 @@
         InsertCommand="INSERT INTO &quot;USERS&quot; (&quot;USER_ID&quot;, &quot;USER_NAME&quot;, &quot;USER_EMAIL&quot;, &quot;USER_PHONE&quot;, &quot;USER_ADDRESS&quot;) VALUES (:USER_ID, :USER_NAME, :USER_EMAIL, :USER_PHONE, :USER_ADDRESS)" 
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
         SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot;, &quot;USER_EMAIL&quot;, &quot;USER_PHONE&quot;, &quot;USER_ADDRESS&quot; FROM &quot;USERS&quot;" 
-        UpdateCommand="UPDATE &quot;USERS&quot; SET &quot;USER_NAME&quot; = :USER_NAME, &quot;USER_EMAIL&quot; = :USER_EMAIL, &quot;USER_PHONE&quot; = :USER_PHONE, &quot;USER_ADDRESS&quot; = :USER_ADDRESS WHERE &quot;USER_ID&quot; = :USER_ID">
+        UpdateCommand="UPDATE &quot;USERS&quot; SET &quot;USER_NAME&quot; = :USER_NAME, &quot;USER_EMAIL&quot; = :USER_EMAIL, &quot;USER_PHONE&quot; = :USER_PHONE, &quot;USER_ADDRESS&quot; = :USER_ADDRESS WHERE &quot;USER_ID&quot; = :USER_ID"
+        OnInserted="SqlDataSource1_Inserted" OnUpdated="SqlDataSource1_Updated" OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="USER_ID" Type="String" /> 
         </DeleteParameters>

@@ -1,7 +1,7 @@
 <%@ Page Title="Theater City Hall Movie" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="complex_theater_movie.aspx.cs" Inherits="Movie_Booking_System.complex_theater_movie" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Complex Form 2 — Theater City Hall Movie
+    Theater City Hall Movie
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">

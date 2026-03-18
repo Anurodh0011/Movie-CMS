@@ -11,7 +11,10 @@ namespace Movie_Booking_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
+
+        protected void SqlDataSource1_Inserted(object sender, SqlDataSourceStatusEventArgs e) => ((Site)Master).HandleSqlError(sender, e, "User");
+        protected void SqlDataSource1_Updated(object sender, SqlDataSourceStatusEventArgs e) => ((Site)Master).HandleSqlError(sender, e, "User");
+        protected void SqlDataSource1_Deleted(object sender, SqlDataSourceStatusEventArgs e) => ((Site)Master).HandleSqlError(sender, e, "User");
     }
 }

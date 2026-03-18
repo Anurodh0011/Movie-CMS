@@ -25,6 +25,7 @@ namespace Movie_Booking_System
 
             // GridView is automatically bound via DataSourceID
             gvOccupancy.DataBind();
+            ((Site)Master).ShowMessage("Occupancy analysis generated successfully! Top performers updated.", "success");
         }
     }
 }

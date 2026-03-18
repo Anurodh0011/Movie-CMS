@@ -38,7 +38,6 @@
                                 <label class="form-label">Duration <span class="text-danger">*</span></label>
                                 <asp:TextBox ID="MOVIE_DURATIONTextBox" runat="server" Text='<%# Bind("MOVIE_DURATION") %>' CssClass="form-control" placeholder="e.g. 120" />
                                 <asp:RequiredFieldValidator ID="rfvDuration" runat="server" ControlToValidate="MOVIE_DURATIONTextBox" ErrorMessage="Required" Display="Dynamic" CssClass="text-danger small" ValidationGroup="CreateMovieGroup" />
-                                <asp:RegularExpressionValidator ID="revDuration" runat="server" ControlToValidate="MOVIE_DURATIONTextBox" ErrorMessage="Digits only" Display="Dynamic" CssClass="text-danger small" ValidationGroup="CreateMovieGroup" ValidationExpression="^\d+$" />
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">Genre <span class="text-danger">*</span></label>
@@ -90,7 +89,6 @@
                             <EditItemTemplate>
                                 <asp:TextBox ID="txtEditDuration" runat="server" Text='<%# Bind("MOVIE_DURATION") %>' CssClass="form-control form-control-sm" />
                                 <asp:RequiredFieldValidator ID="rfvEditDuration" runat="server" ControlToValidate="txtEditDuration" ErrorMessage="*" Display="Dynamic" CssClass="text-danger" ValidationGroup="EditMovieGroup" />
-                                <asp:RegularExpressionValidator ID="revEditDuration" runat="server" ControlToValidate="txtEditDuration" ErrorMessage="?" Display="Dynamic" CssClass="text-danger" ValidationGroup="EditMovieGroup" ValidationExpression="^\d+$" />
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Genre" SortExpression="GENRE">
@@ -128,7 +126,8 @@
         InsertCommand="INSERT INTO &quot;MOVIE&quot; (&quot;MOVIE_ID&quot;, &quot;MOVIE_TITLE&quot;, &quot;MOVIE_DURATION&quot;, &quot;GENRE&quot;, &quot;RELEASE_DATE&quot;) VALUES (:MOVIE_ID, :MOVIE_TITLE, :MOVIE_DURATION, :GENRE, :RELEASE_DATE)" 
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
         SelectCommand="SELECT &quot;MOVIE_ID&quot;, &quot;MOVIE_TITLE&quot;, &quot;MOVIE_DURATION&quot;, &quot;GENRE&quot;, &quot;RELEASE_DATE&quot; FROM &quot;MOVIE&quot;" 
-        UpdateCommand="UPDATE &quot;MOVIE&quot; SET &quot;MOVIE_TITLE&quot; = :MOVIE_TITLE, &quot;MOVIE_DURATION&quot; = :MOVIE_DURATION, &quot;GENRE&quot; = :GENRE, &quot;RELEASE_DATE&quot; = :RELEASE_DATE WHERE &quot;MOVIE_ID&quot; = :MOVIE_ID">
+        UpdateCommand="UPDATE &quot;MOVIE&quot; SET &quot;MOVIE_TITLE&quot; = :MOVIE_TITLE, &quot;MOVIE_DURATION&quot; = :MOVIE_DURATION, &quot;GENRE&quot; = :GENRE, &quot;RELEASE_DATE&quot; = :RELEASE_DATE WHERE &quot;MOVIE_ID&quot; = :MOVIE_ID"
+        OnInserted="SqlDataSource1_Inserted" OnUpdated="SqlDataSource1_Updated" OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="MOVIE_ID" Type="String" />
         </DeleteParameters>

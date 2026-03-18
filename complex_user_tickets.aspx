@@ -1,7 +1,7 @@
 <%@ Page Title="User Ticket Report" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="complex_user_tickets.aspx.cs" Inherits="Movie_Booking_System.complex_user_tickets" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Complex Form 1 — User Ticket Report
+    User Ticket Report
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">

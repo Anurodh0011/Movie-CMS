@@ -47,6 +47,8 @@ namespace Movie_Booking_System
                 }
             }
             litTotalPaid.Text = string.Format("{0:N0}", totalPaid);
+
+            ((Site)Master).ShowMessage($"Report generated successfully! <strong>{count}</strong> ticket records found for the selected period.", "success");
         }
     }
 }
